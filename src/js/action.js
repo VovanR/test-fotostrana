@@ -1,4 +1,5 @@
-import {getDataset, ajax} from './utils.js'
+import './rAF.js';
+import {getDataset, ajax, formatTime} from './utils.js'
 
 const Action = function (props) {
   this._block = props.block
@@ -16,11 +17,15 @@ Action.prototype._initialize = function () {
   const block = this._block
 
   this._id = getDataset(block, 'id')
-  this._restTime = getDataset(block, 'rest-time')
-  this._recoveryTime = getDataset(block, 'recovery-time')
+  this._restTime = getDataset(block, 'rest-time') * 1000
+  this._recoveryTime = getDataset(block, 'recovery-time') * 1000
   this._points = getDataset(block, 'points')
 
   this._bindControls()
+
+  if (this._restTime > 0) {
+    this._startAction()
+  }
 }
 
 Action.prototype._bindControls = function () {
@@ -42,9 +47,39 @@ Action.prototype._requestAction = function () {
         return
       }
 
-      this._onActionEnd(this._points)
+      this._startAction()
     }
   })
+}
+
+Action.prototype._startAction = function () {
+  let start = null
+  const element = this._block
+  const recoveryTime = this._recoveryTime
+  let restTime = this._restTime
+  const startTime = restTime ? recoveryTime - restTime : 0
+
+  const step = timestamp => {
+    if (!start) {
+      start = timestamp
+    }
+
+    const progress = timestamp - start + startTime
+    restTime = recoveryTime - progress
+
+    this._restTime = restTime
+    element.innerText = formatTime(restTime)
+
+    if (restTime > 0) {
+      window.requestAnimationFrame(step)
+    } else {
+      this._onActionEnd(this._points)
+      this._restTime = 0
+      element.innerText = ''
+    }
+  }
+
+  window.requestAnimationFrame(step)
 }
 
 export default Action
