@@ -186,8 +186,8 @@ Action.prototype._initialize = function () {
 	var block = this._block;
 
 	this._id = (0, _utils.getDataset)(block, 'id');
-	this._restTime = (0, _utils.getDataset)(block, 'rest-time') * 10;
-	this._recoveryTime = (0, _utils.getDataset)(block, 'recovery-time') * 10;
+	this._restTime = (0, _utils.getDataset)(block, 'rest-time') * 1000;
+	this._recoveryTime = (0, _utils.getDataset)(block, 'recovery-time') * 1000;
 	this._points = (0, _utils.getDataset)(block, 'points');
 
 	this._bindControls();
