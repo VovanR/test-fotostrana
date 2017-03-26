@@ -14,8 +14,8 @@ Points.prototype._initialize = function () {
   this._points = getDataset(block, 'points') || 0
 }
 
-Points.prototype.addValue = function (value) {
-  this._setValue(this._points + value)
+Points.prototype.addPoints = function (points) {
+  this._setValue(this._points + points)
 }
 
 Points.prototype._setValue = function (value) {

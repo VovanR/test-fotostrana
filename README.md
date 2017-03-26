@@ -2,6 +2,10 @@
 
 > Тестовое задание для Фотостраны
 
+Demo: [vovanr.github.io/test-fotostrana][demo]
+
+![](preview.png)
+
 - [PostCSS](https://github.com/postcss/postcss)
 - [PreCSS](https://github.com/jonathantneal/precss)
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
@@ -26,3 +30,5 @@ Open [localhost:8080](http://localhost:8080/)
 
 ## License
 MIT © [Vladimir Rodkin](https://github.com/VovanR)
+
+[demo]: https://vovanr.github.io/test-fotostrana

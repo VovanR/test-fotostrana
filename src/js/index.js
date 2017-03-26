@@ -1,7 +1,7 @@
-import '../css/index.css';
+import '../css/index.css'
 import Points from './points.js'
-import Action from './action.js';
-import {forEach} from './utils.js';
+import Action from './action.js'
+import {forEach} from './utils.js'
 
 const points = new Points({
   block: document.querySelector('.js-points')
@@ -13,7 +13,7 @@ forEach(actionBlocks, block => {
   const action = new Action({
     block,
     onActionEnd: value => {
-      points.addValue(value)
+      points.addPoints(value)
     }
   })
 

@@ -1,4 +1,4 @@
-import './rAF.js';
+import './rAF.js'
 import {getDataset, ajax, formatTime} from './utils.js'
 
 const Action = function (props) {
