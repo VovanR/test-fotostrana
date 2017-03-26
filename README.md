@@ -7,7 +7,6 @@
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
 - [CSSO](https://github.com/css/csso)
 - [stylelint](https://github.com/stylelint/stylelint) with [standard config](https://github.com/stylelint/stylelint-config-standard)
-- [postcss-style-guide](https://github.com/morishitter/postcss-style-guide)
 
 ## Install
 ```
@@ -23,7 +22,7 @@ npm run build
 ```
 npm start
 ```
-Open [localhost:8080/webpack-dev-server](http://localhost:8080/webpack-dev-server/)
+Open [localhost:8080](http://localhost:8080/)
 
 ## License
 MIT © [Vladimir Rodkin](https://github.com/VovanR)
