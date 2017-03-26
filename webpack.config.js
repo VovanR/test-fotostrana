@@ -22,6 +22,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        enforce: 'pre',
+        exclude: /(node_modules|vendor)/,
+        use: [
+          {
+            loader: 'eslint-loader'
+          }
+        ]
+      },
+      {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
