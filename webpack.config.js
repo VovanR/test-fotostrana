@@ -26,6 +26,9 @@ module.exports = {
         enforce: 'pre',
         exclude: /(node_modules|vendor)/,
         use: [
+					{
+						loader: 'babel-loader'
+					},
           {
             loader: 'eslint-loader'
           }
