@@ -3,9 +3,13 @@
   "description": "Тестовое задание для Фотостраны",
   "author": "Vladimir Rodkin <mail@vovanr.com> (http://vovanr.com/)",
   "license": "MIT",
+  "repository": "VovanR/test-fotostrana",
+  "homepage": "https://vovanr.github.io/test-fotostrana",
+  "private": true,
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "start": "NODE_ENV=development webpack-dev-server --content-base build/"
+    "start": "NODE_ENV=development webpack-dev-server --content-base build/",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -19,6 +23,7 @@
     "eslint-config-xo": "^0.18.1",
     "eslint-loader": "^1.7.0",
     "extract-text-webpack-plugin": "^2.1.0",
+    "gh-pages": "^0.12.0",
     "postcss-clearfix": "^1.0.0",
     "postcss-csso": "^2.0.0",
     "postcss-flexbugs-fixes": "^2.1.0",
