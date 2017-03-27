@@ -172,7 +172,7 @@ var _utils = __webpack_require__(0);
 
 var Action = function Action(props) {
 	this._block = props.block;
-	this._onActionEnd = props.onActionEnd;
+	this._onActionStart = props.onActionStart;
 
 	this._id = null;
 	this._restTime = null;
@@ -234,6 +234,10 @@ Action.prototype._startAction = function () {
 	var restTime = this._restTime;
 	var startTime = restTime ? recoveryTime - restTime : 0;
 
+	if (startTime === 0) {
+		this._onActionStart(this._points);
+	}
+
 	var step = function step(timestamp) {
 		if (!start) {
 			start = timestamp;
@@ -248,7 +252,6 @@ Action.prototype._startAction = function () {
 		if (restTime > 0) {
 			window.requestAnimationFrame(step);
 		} else {
-			_this3._onActionEnd(_this3._points);
 			_this3._restTime = 0;
 			element.innerText = '';
 		}
@@ -335,7 +338,7 @@ var actionBlocks = document.querySelectorAll('.js-action-list__item');
 (0, _utils.forEach)(actionBlocks, function (block) {
 	var action = new _action2.default({
 		block: block,
-		onActionEnd: function onActionEnd(value) {
+		onActionStart: function onActionStart(value) {
 			points.addPoints(value);
 		}
 	});
