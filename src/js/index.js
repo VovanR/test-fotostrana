@@ -14,7 +14,7 @@ const actionBlocks = document.querySelectorAll('.js-action-list__item');
 forEach(actionBlocks, block => {
 	const action = new Action({
 		block,
-		onActionEnd: value => {
+		onActionStart: value => {
 			points.addPoints(value);
 		}
 	});

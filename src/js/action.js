@@ -5,7 +5,7 @@ import {getDataset, ajax, formatTime} from './utils.js';
 
 const Action = function (props) {
 	this._block = props.block;
-	this._onActionEnd = props.onActionEnd;
+	this._onActionStart = props.onActionStart;
 
 	this._id = null;
 	this._restTime = null;
@@ -61,6 +61,10 @@ Action.prototype._startAction = function () {
 	let restTime = this._restTime;
 	const startTime = restTime ? recoveryTime - restTime : 0;
 
+	if (startTime === 0) {
+		this._onActionStart(this._points);
+	}
+
 	const step = timestamp => {
 		if (!start) {
 			start = timestamp;
@@ -75,7 +79,6 @@ Action.prototype._startAction = function () {
 		if (restTime > 0) {
 			window.requestAnimationFrame(step);
 		} else {
-			this._onActionEnd(this._points);
 			this._restTime = 0;
 			element.innerText = '';
 		}
